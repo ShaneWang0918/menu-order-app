@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>翔鸽私厨</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <h1>翔鸽私厨</h1>
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="orders.html">订单管理</a></li>
+      <li><a href="users.html">用户管理</a></li>
+      <li><a href="dishes.html">菜品管理</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <section class="menu-section">
+      <div class="section-title">
+        <h3>可点餐菜品</h3>
+        <p>每道菜都可以直接加入今日订单。</p>
+      </div>
+      <div id="menu-list" class="menu-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="order-section">
+      <div class="section-title order-header">
+        <div>
+          <h3>今日已选菜单</h3>
+          <p>先选日期，再加入菜品到该日期的订单。</p>
+        </div>
+      </div>
+      <form id="home-order-form" class="order-toolbar">
+        <label class="date-picker inline-picker">
+          <span>点餐日期</span>
+          <select id="order-date-select"></select>
+        </label>
+        <label class="date-picker inline-picker">
+          <span>订餐人</span>
+          <select id="home-order-user" name="user">
+            <option value="">请选择订餐人</option>
+          </select>
+        </label>
+        <button class="submit-order-button" type="submit">建立今日订单</button>
+      </form>
+      <div id="order-summary" class="order-summary"></div>
+      <div id="selected-list" class="selected-list"></div>
+      <p id="home-order-message" class="form-message"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

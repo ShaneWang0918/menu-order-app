@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>用户管理</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <h1>翔鸽私厨</h1>
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="orders.html">订单管理</a></li>
+      <li><a href="users.html">用户管理</a></li>
+      <li><a href="dishes.html">菜品管理</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">用户管理页</p>
+      <h2>管理订餐人</h2>
+      <p class="hero-text">先建立本地用户名单，之后在订单管理页就可以指定谁送出今天的订单。</p>
+    </section>
+
+    <section class="manager-layout">
+      <section class="manager-panel">
+        <div class="section-title">
+          <h3>新增用户</h3>
+          <p>只需要姓名和部门就可以先跑通流程。</p>
+        </div>
+
+        <form id="user-form" class="dish-form">
+          <label class="form-field">
+            <span>姓名</span>
+            <input type="text" name="name" placeholder="例如：小林" />
+          </label>
+
+          <label class="form-field">
+            <span>部门</span>
+            <input type="text" name="team" placeholder="例如：产品组" />
+          </label>
+
+          <div class="form-actions">
+            <button class="add-button" type="submit">新增用户</button>
+          </div>
+        </form>
+
+        <p id="user-message" class="form-message"></p>
+      </section>
+
+      <section class="manager-panel">
+        <div class="section-title">
+          <h3>当前用户</h3>
+          <p>这些人会出现在订单管理页的订餐人下拉选单。</p>
+        </div>
+        <div id="user-list" class="stack-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

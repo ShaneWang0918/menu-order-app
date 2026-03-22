@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>菜品管理</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <h1>翔鸽私厨</h1>
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="orders.html">订单管理</a></li>
+      <li><a href="users.html">用户管理</a></li>
+      <li><a href="dishes.html">菜品管理</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">菜品管理页</p>
+      <h2>管理菜品</h2>
+      <p class="hero-text">这里可以直接用前端假数据新增或删除菜品，首页会同步显示最新菜单。</p>
+    </section>
+
+    <section class="manager-layout">
+      <section class="manager-panel">
+        <div class="section-title">
+          <h3>新增菜品</h3>
+          <p>先输入基本资料，之后首页就能直接点餐。</p>
+        </div>
+
+        <form id="dish-form" class="dish-form">
+          <label class="form-field">
+            <span>菜名</span>
+            <input type="text" name="name" placeholder="例如：盐烤鲑鱼便当" />
+          </label>
+
+          <label class="form-field">
+            <span>上传图片</span>
+            <input type="file" name="image" accept="image/*" />
+          </label>
+
+          <label class="form-field">
+            <span>食材</span>
+            <textarea name="ingredients" rows="4" placeholder="例如：鲑鱼、白饭、花椰菜、玉子烧"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="add-button" type="submit">新增菜品</button>
+          </div>
+        </form>
+
+        <p id="form-message" class="form-message"></p>
+      </section>
+
+      <section class="manager-panel">
+        <div class="section-title">
+          <h3>当前菜单</h3>
+          <p>删除后首页的菜单列表也会同步更新。</p>
+        </div>
+        <div id="manage-dishes-list" class="manage-dishes-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

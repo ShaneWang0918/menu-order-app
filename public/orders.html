@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>订单管理</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-admin-page="true">
+  <nav>
+    <h1>翔鸽私厨</h1>
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="orders.html">订单管理</a></li>
+      <li><a href="users.html">用户管理</a></li>
+      <li><a href="dishes.html">菜品管理</a></li>
+      <li><button id="admin-logout-button" class="nav-button" type="button">退出管理</button></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">订单管理页</p>
+      <h2>订单管理</h2>
+      <p class="hero-text">这里分成未完成订单与点餐统计两个部分，方便你追踪每日订单状态。</p>
+    </section>
+
+    <section class="manager-panel orders-section">
+      <div class="section-title order-header">
+        <div>
+          <h3>未完成订单</h3>
+          <p>同一天的所有菜品会整合在同一张卡片中，处理完可标记为已完成。</p>
+        </div>
+      </div>
+      <div id="pending-order-list" class="stack-list"></div>
+      <p id="order-message" class="form-message"></p>
+    </section>
+
+    <section class="manager-panel orders-section">
+      <div class="section-title">
+        <h3>点餐统计</h3>
+        <p>可以搜索菜品或点餐人，查看累计点餐次数。</p>
+      </div>
+
+      <div class="stats-toolbar">
+        <input id="order-stats-search" class="search-input" type="search" placeholder="搜索菜品或点餐人" />
+      </div>
+
+      <div class="table-wrap">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>菜品</th>
+              <th>点餐次数</th>
+              <th>点餐人</th>
+            </tr>
+          </thead>
+          <tbody id="order-stats-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/order/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "翔鸽私厨",
+    "navigationBarBackgroundColor": "#264653",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f2ea",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
