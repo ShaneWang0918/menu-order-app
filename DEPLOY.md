@@ -10,7 +10,8 @@
 - 当前数据保存在 SQLite 数据库 `data/app.db`
 - 如果项目里已有旧的 `data/store.json`，服务首次启动时会自动迁移数据
 - 管理后台密码支持环境变量 `ADMIN_PASSWORD`
-- Node 版本已显式锁定为 `20.18.0`，避免原生模块在高版本运行时下不兼容
+- Node 版本已显式锁定为 `22.17.0`
+- 服务端会优先使用 Node 内建的 `node:sqlite`，避免 Render 上 `sqlite3` 原生模块的兼容问题
 
 ## 本地启动
 
@@ -40,7 +41,7 @@ http://localhost:3000
 ## 推荐环境变量
 
 - `NODE_ENV=production`
-- `NODE_VERSION=20.18.0`
+- `NODE_VERSION=22.17.0`
 - `ADMIN_PASSWORD=544986911`
 - `DATA_DIR=/var/data`
 - `UPLOADS_DIR=/var/data/uploads`

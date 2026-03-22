@@ -3,8 +3,16 @@ const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
 const crypto = require("crypto");
-const sqlite3 = require("sqlite3").verbose();
 const multer = require("multer");
+
+let DatabaseSync = null;
+let sqlite3 = null;
+
+try {
+  ({ DatabaseSync } = require("node:sqlite"));
+} catch (error) {
+  sqlite3 = require("sqlite3").verbose();
+}
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -138,10 +146,20 @@ function readLegacyStore() {
 
 function openDatabase() {
   ensureDataDir();
+
+  if (DatabaseSync) {
+    return new DatabaseSync(dbFile);
+  }
+
   return new sqlite3.Database(dbFile);
 }
 
 function run(database, sql, params = []) {
+  if (DatabaseSync) {
+    const statement = database.prepare(sql);
+    return Promise.resolve(statement.run(...params));
+  }
+
   return new Promise((resolve, reject) => {
     database.run(sql, params, function onRun(error) {
       if (error) {
@@ -155,6 +173,11 @@ function run(database, sql, params = []) {
 }
 
 function get(database, sql, params = []) {
+  if (DatabaseSync) {
+    const statement = database.prepare(sql);
+    return Promise.resolve(statement.get(...params));
+  }
+
   return new Promise((resolve, reject) => {
     database.get(sql, params, (error, row) => {
       if (error) {
@@ -168,6 +191,11 @@ function get(database, sql, params = []) {
 }
 
 function all(database, sql, params = []) {
+  if (DatabaseSync) {
+    const statement = database.prepare(sql);
+    return Promise.resolve(statement.all(...params));
+  }
+
   return new Promise((resolve, reject) => {
     database.all(sql, params, (error, rows) => {
       if (error) {
@@ -181,6 +209,11 @@ function all(database, sql, params = []) {
 }
 
 function closeDatabase(database) {
+  if (DatabaseSync) {
+    database.close();
+    return Promise.resolve();
+  }
+
   return new Promise((resolve, reject) => {
     database.close((error) => {
       if (error) {
