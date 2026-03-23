@@ -1,0 +1,63 @@
+<view class="page">
+  <view class="card">
+    <view class="section-title">翔鸽私厨点餐</view>
+    <view class="section-text">先选择日期和订餐人，再把菜品加入订单。</view>
+  </view>
+
+  <view class="card">
+    <view class="picker-group">
+      <view class="picker-item">
+        <view class="picker-label">点餐日期</view>
+        <picker range="{{dateLabels}}" bindchange="handleDateChange">
+          <view class="picker-value">{{selectedDateLabel}}</view>
+        </picker>
+      </view>
+
+      <view class="picker-item">
+        <view class="picker-label">订餐人</view>
+        <picker range="{{userOptions}}" range-key="label" bindchange="handleUserChange">
+          <view class="picker-value">{{selectedUserLabel}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <button class="primary-button" bindtap="handleSubmitOrder" loading="{{submitting}}" disabled="{{submitting}}">提交订单</button>
+    <view wx:if="{{message}}" class="message">{{message}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">今日已选菜单</view>
+    <block wx:if="{{selectedItems.length}}">
+      <block wx:for="{{selectedSummary}}" wx:key="id">
+        <view class="selected-item">
+          <view class="selected-main">
+            <view class="selected-name">{{item.name}}</view>
+            <view class="selected-text">食材：{{item.ingredients}}</view>
+          </view>
+          <view class="selected-side">
+            <view class="selected-count">x {{item.count}}</view>
+            <button class="ghost-button" size="mini" data-id="{{item.id}}" bindtap="handleRemoveDish">移除一份</button>
+          </view>
+        </view>
+      </block>
+    </block>
+    <view wx:else class="empty-text">目前还没有加入任何菜品。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">可点餐菜品</view>
+    <block wx:if="{{dishes.length}}">
+      <block wx:for="{{dishes}}" wx:key="id">
+        <view class="dish-card">
+          <image class="dish-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="dish-content">
+            <view class="dish-name">{{item.name}}</view>
+            <view class="dish-text">食材：{{item.ingredients}}</view>
+            <button class="secondary-button" data-id="{{item.id}}" bindtap="handleAddDish">加入今日订单</button>
+          </view>
+        </view>
+      </block>
+    </block>
+    <view wx:else class="empty-text">目前没有可点菜品。</view>
+  </view>
+</view>

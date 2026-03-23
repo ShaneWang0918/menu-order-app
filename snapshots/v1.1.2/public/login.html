@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>后台登录</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <h1>翔鸽私厨</h1>
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="login.html">后台登录</a></li>
+    </ul>
+  </nav>
+
+  <main class="page login-page">
+    <section class="manager-panel login-panel">
+      <div class="section-title">
+        <h2>管理后台登录</h2>
+        <p>请输入固定管理密码后进入订单、用户和菜品管理页面。</p>
+      </div>
+
+      <form id="admin-login-form" class="dish-form">
+        <label class="form-field">
+          <span>管理密码</span>
+          <input type="password" name="password" placeholder="请输入管理密码" autocomplete="current-password" />
+        </label>
+
+        <div class="form-actions">
+          <button class="submit-order-button" type="submit">登录后台</button>
+        </div>
+      </form>
+
+      <p id="admin-login-message" class="form-message"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
